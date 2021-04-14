@@ -1,11 +1,13 @@
 # promise-hooks-react
 
+React Promise Hooks.
+
 ## Usage
 
 ```tsx
-import {} from 'promise-hooks-react';
+import { usePromise, useCallbackPromise } from 'promise-hooks-react';
 
-function Component() {
+function ComponentA() {
   const [data, error, isLoading] = usePromise(() => fetch(url), []);
   if (isLoading) {
     return 'Loading...';
@@ -18,9 +20,9 @@ function Component() {
   );
 }
 
-function Component() {
+function ComponentB() {
   const [submit, data, error, isSubmitting] = useCallbackPromise((value) => fetch(url, { method: 'POST', body: value }), []);
-  
+
   if (isLoading) {
     return 'Loading...';
   }
@@ -33,3 +35,7 @@ function Component() {
   );
 }
 ```
+
+## License
+
+[MIT](../../LICENSE)
