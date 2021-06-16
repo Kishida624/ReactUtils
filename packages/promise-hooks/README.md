@@ -8,14 +8,19 @@ React Promise Hooks.
 import { usePromise, useCallbackPromise } from 'promise-hooks-react';
 
 function ComponentA() {
-  const [data, error, isLoading] = usePromise(() => fetch(url), []);
+  const [data, error, isLoading, reload] = usePromise(() => fetch(url), []);
   if (isLoading) {
     return 'Loading...';
   }
   return (
     <div>
       {error && <div className="error">Error: {error}</div>}
-      {data && <div className="data">Response: {data}</div>}
+      {data && (
+        <>
+          <div className="data">Response: {data}</div>
+          <button onClick={reload}>reload</button>
+        </>
+      )}
     </div>
   );
 }

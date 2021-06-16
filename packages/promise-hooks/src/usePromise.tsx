@@ -1,15 +1,13 @@
 import { DependencyList, useEffect, useRef } from 'react';
 
-import { ErrorReason, PromiseFunc } from './types';
+import { ErrorReason, IsPending, PromiseFunc } from './types';
 import { useCallbackPromise } from './useCallbackPromise';
-
-type IsPending = boolean;
 
 export function usePromise<Result>(
   promise: PromiseLike<Result> | PromiseFunc<Result>,
-  deps?: DependencyList,
-): [Result | undefined, ErrorReason | undefined, IsPending] {
-  const [run, result, error, isCalling] = useCallbackPromise(() => {
+  deps: DependencyList = [],
+): [Result | undefined, ErrorReason | undefined, IsPending, PromiseFunc<Result>] {
+  const [call, result, error, isCalling] = useCallbackPromise(() => {
     if (typeof promise === 'function') {
       return promise();
     }
@@ -20,10 +18,10 @@ export function usePromise<Result>(
 
   useEffect(() => {
     initRef.current = false;
-    run();
+    call();
   }, deps);
 
   const isPending = initRef.current || isCalling;
 
-  return [result, error, isPending];
+  return [result, error, isPending, call];
 }
