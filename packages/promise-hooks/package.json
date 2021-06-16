@@ -1,6 +1,9 @@
 {
   "name": "promise-hooks-react",
-  "version": "1.0.2",
+  "version": "1.1.0",
+  "scripts": {
+    "build": "tsc"
+  },
   "main": "dist/index.js",
   "devDependencies": {
     "@types/react": "^17.0.3",
