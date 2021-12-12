@@ -1,6 +1,6 @@
 {
   "name": "promise-hooks-react",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "scripts": {
     "build": "tsc"
   },
@@ -11,7 +11,7 @@
     "typescript": "^4.2.4"
   },
   "peerDependencies": {
-    "react": "^16.8.0"
+    "react": ">=16.8.0"
   },
   "author": "Shinya Kamiaka <shinya@kamiaka.net> (https://kamiaka.net/)",
   "license": "MIT",
